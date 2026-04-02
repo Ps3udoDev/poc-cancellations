@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Aseguradora XYZ - Lanzador de Aplicaciones</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#002B5B",
+                        "accent": "#00A8A8",
+                        "surface": "#F8F9FA",
+                        "on-surface": "#191C1D",
+                        "on-surface-variant": "#43474F",
+                        "outline-variant": "#E1E3E4"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                    },
+                    borderRadius: { "DEFAULT": "8px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .sidebar-active {
+            background-color: rgba(0, 168, 168, 0.1);
+            color: #00A8A8;
+            border-right: 3px solid #00A8A8;
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface flex flex-col h-screen overflow-hidden">
+    <!-- Persistent Header -->
+    <header
+        class="bg-white border-b border-outline-variant flex justify-between items-center px-8 h-16 w-full shrink-0 z-50">
+        <div class="flex items-center gap-8">
+            <span class="text-xl font-bold text-primary tracking-tighter font-headline">Aseguradora XYZ</span>
+            <nav class="hidden md:flex gap-6 items-center h-full">
+                <a class="font-headline font-semibold tracking-tight text-primary border-b-2 border-accent pb-1"
+                    href="#">Lanzador</a>
+                <a class="font-headline font-semibold tracking-tight text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Ayuda</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 px-3 py-1.5 hover:bg-slate-50 rounded transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+                <span class="font-headline font-semibold tracking-tight text-primary">Juan Pérez</span>
+            </div>
+            <button
+                class="bg-primary text-white hover:opacity-90 px-4 py-2 rounded font-headline font-semibold tracking-tight transition-all text-sm">
+                Cerrar Sesión
+            </button>
+        </div>
+    </header>
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Fixed Left Sidebar -->
+        <aside class="w-64 bg-white border-r border-outline-variant flex flex-col shrink-0">
+            <div class="p-6">
+                <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Módulos</p>
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-headline font-semibold hover:bg-slate-50 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">shield</span>
+                        <span>Seguridad</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 sidebar-active text-accent font-headline font-semibold transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">payments</span>
+                        <span>Cobranzas</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-headline font-semibold hover:bg-slate-50 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">monitoring</span>
+                        <span>Reportes</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-headline font-semibold hover:bg-slate-50 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">groups</span>
+                        <span>Clientes</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-headline font-semibold hover:bg-slate-50 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">description</span>
+                        <span>Pólizas</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-headline font-semibold hover:bg-slate-50 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">settings</span>
+                        <span>Configuración</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="mt-auto p-6 border-t border-outline-variant">
+                <div class="flex items-center gap-3 text-on-surface-variant text-xs">
+                    <span class="material-symbols-outlined text-sm">info</span>
+                    <span>v4.8.2-enterprise</span>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-12 bg-surface">
+            <!-- Content Header -->
+            <header class="mb-12">
+                <h1 class="text-4xl font-headline font-extrabold tracking-tight text-primary mb-2">Módulo de Cobranzas
+                </h1>
+                <p class="text-on-surface-variant max-w-2xl text-lg">Seleccione un ejecutable para gestionar los
+                    procesos financieros y administrativos de cobranza.</p>
+            </header>
+            <!-- Executables Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <button
+                    class="group flex flex-col items-start p-8 bg-white border border-outline-variant rounded-lg hover:border-accent hover:shadow-lg transition-all duration-300 text-left">
+                    <div
+                        class="w-12 h-12 rounded bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-accent"
+                            data-icon="auto_delete">auto_delete</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-xl text-primary mb-2">Cancelaciones Automáticas</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Procesamiento masivo de bajas por
+                        falta de pago y gestión de lotes diarios.</p>
+                    <div class="mt-auto flex items-center text-accent text-sm font-bold uppercase tracking-wider">
+                        <span>Ejecutar ahora</span>
+                        <span class="material-symbols-outlined ml-2 text-base">arrow_forward</span>
+                    </div>
+                </button>
+                <!-- Card 2 -->
+                <button
+                    class="group flex flex-col items-start p-8 bg-white border border-outline-variant rounded-lg hover:border-accent hover:shadow-lg transition-all duration-300 text-left">
+                    <div
+                        class="w-12 h-12 rounded bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-accent"
+                            data-icon="account_balance_wallet">account_balance_wallet</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-xl text-primary mb-2">Gestión de Pagos</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Conciliación bancaria, carga de
+                        cuotas y seguimiento de mora técnica.</p>
+                    <div class="mt-auto flex items-center text-accent text-sm font-bold uppercase tracking-wider">
+                        <span>Abrir módulo</span>
+                        <span class="material-symbols-outlined ml-2 text-base">arrow_forward</span>
+                    </div>
+                </button>
+                <!-- Card 3 -->
+                <button
+                    class="group flex flex-col items-start p-8 bg-white border border-outline-variant rounded-lg hover:border-accent hover:shadow-lg transition-all duration-300 text-left">
+                    <div
+                        class="w-12 h-12 rounded bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-accent"
+                            data-icon="receipt_long">receipt_long</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-xl text-primary mb-2">Liquidación de Siniestros</h3>
+                    <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Cálculo de montos indemnizatorios y
+                        órdenes de pago para terceros y asegurados.</p>
+                    <div class="mt-auto flex items-center text-accent text-sm font-bold uppercase tracking-wider">
+                        <span>Gestionar liquidaciones</span>
+                        <span class="material-symbols-outlined ml-2 text-base">arrow_forward</span>
+                    </div>
+                </button>
+            </div>
+            <!-- Contextual Info / Footer of Main Content -->
+            <div class="mt-16 bg-primary/5 p-6 rounded-lg border border-primary/10 flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary">tips_and_updates</span>
+                <p class="text-primary text-sm font-medium">Tip: Puedes usar <kbd
+                        class="bg-white px-2 py-0.5 border rounded shadow-sm">Ctrl + K</kbd> para buscar ejecutables en
+                    otros módulos rápidamente.</p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

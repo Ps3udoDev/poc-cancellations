@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Aseguradora XYZ - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#79f6f5",
+                        "surface-container-low": "#f3f4f5",
+                        "on-surface-variant": "#43474f",
+                        "on-tertiary-fixed-variant": "#713619",
+                        "surface-container-high": "#e7e8e9",
+                        "outline": "#747780",
+                        "outline-variant": "#c4c6d0",
+                        "on-primary-container": "#7594ca",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "primary-container": "#002b5b",
+                        "surface-bright": "#f8f9fa",
+                        "secondary-container": "#79f6f5",
+                        "on-secondary-container": "#007070",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#cd805d",
+                        "tertiary-container": "#4f1c02",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "secondary-fixed-dim": "#59d9d9",
+                        "on-primary-fixed-variant": "#264778",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#a9c7ff",
+                        "primary": "#001736",
+                        "on-surface": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "background": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#006a6a",
+                        "surface-dim": "#d9dadb",
+                        "tertiary": "#2f0c00",
+                        "tertiary-fixed": "#ffdbcd",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-variant": "#e1e3e4",
+                        "surface-tint": "#405f91",
+                        "surface": "#f8f9fa",
+                        "on-secondary-fixed": "#002020",
+                        "on-error": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #002b5b 0%, #001736 100%);
+        }
+
+        .soft-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body text-on-background min-h-screen flex items-center justify-center p-6">
+    <!-- Suppression of Navigation Shells: This is a Focused Transactional screen -->
+    <main class="w-full max-w-md flex flex-col items-center">
+        <!-- Logo Section -->
+        <div class="mb-12 text-center">
+            <div class="inline-flex items-center justify-center p-3 mb-4 rounded-xl bg-surface-container-low shadow-sm">
+                <span class="material-symbols-outlined text-primary text-3xl"
+                    style="font-variation-settings: 'FILL' 1;">shield</span>
+            </div>
+            <h1 class="font-headline font-extrabold text-2xl tracking-tighter text-primary">
+                Aseguradora XYZ
+            </h1>
+        </div>
+        <!-- Login Card -->
+        <section
+            class="w-full bg-surface-container-lowest rounded-xl p-8 shadow-[0_32px_64px_-12px_rgba(0,23,54,0.04)] border border-outline-variant/10">
+            <div class="mb-8">
+                <h2 class="font-headline font-bold text-xl text-primary mb-1">Bienvenido de nuevo</h2>
+                <p class="text-on-surface-variant text-sm">Ingrese sus credenciales para acceder al panel técnico.</p>
+            </div>
+            <form class="space-y-6">
+                <!-- Username Field -->
+                <div class="space-y-2">
+                    <label
+                        class="block font-label text-[10px] font-bold uppercase tracking-wider text-on-surface-variant"
+                        for="username">
+                        Usuario
+                    </label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-secondary focus:ring-0 rounded-lg py-3 px-4 transition-all placeholder:text-outline-variant text-on-surface text-sm"
+                            id="username" name="username" placeholder="nombre.apellido" type="text" />
+                    </div>
+                </div>
+                <!-- Password Field -->
+                <div class="space-y-2">
+                    <label
+                        class="block font-label text-[10px] font-bold uppercase tracking-wider text-on-surface-variant"
+                        for="password">
+                        Contraseña
+                    </label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-secondary focus:ring-0 rounded-lg py-3 px-4 transition-all placeholder:text-outline-variant text-on-surface text-sm"
+                            id="password" name="password" placeholder="••••••••" type="password" />
+                    </div>
+                </div>
+                <!-- Action Button -->
+                <button
+                    class="w-full premium-gradient text-on-primary font-headline font-semibold py-3.5 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-primary/5"
+                    type="submit">
+                    Iniciar Sesión
+                </button>
+                <!-- Forgot Password -->
+                <div class="text-center pt-2">
+                    <a class="text-primary font-label text-xs font-semibold hover:text-secondary transition-colors underline-offset-4 hover:underline"
+                        href="#">
+                        Olvidé mi contraseña
+                    </a>
+                </div>
+            </form>
+        </section>
+        <!-- Footer Note -->
+        <footer class="mt-12 text-center">
+            <p class="text-outline text-[11px] font-medium tracking-wide">
+                © 2024 Aseguradora XYZ. Todos los derechos reservados.
+                <br />
+                <span class="opacity-60">Sistema de Gestión Ténica v2.4.0</span>
+            </p>
+        </footer>
+    </main>
+    <!-- Decoration Element: Atmospheric Background -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+        <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+        <div class="absolute top-[60%] left-[70%] w-[35%] h-[35%] rounded-full bg-secondary-fixed/10 blur-[100px]">
+        </div>
+    </div>
+</body>
+
+</html>
