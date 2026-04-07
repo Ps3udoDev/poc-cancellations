@@ -22,6 +22,7 @@ import {
 } from "@/data/cancellations";
 import { useUIStore } from "@/stores/ui-store";
 import { cn } from "@/lib/utils";
+import { exportToExcel } from "@/lib/excel";
 
 // ── Stage types ──────────────────────────────────────────────
 type TabId =
@@ -157,6 +158,35 @@ export function CancellationsPanel() {
       }
     }
   }, [showLoader, hideLoader, notify]);
+
+  // ── Generic Export handler ──
+  async function handleExport() {
+    let dataToExport: PolicyRecord[] = [];
+    if (activeTab === "seleccion") dataToExport = seleccion;
+    else if (activeTab === "cancelacion_previa") dataToExport = previa;
+    else if (activeTab === "errores") dataToExport = errores;
+    else if (activeTab === "cancelacion_definitiva") dataToExport = definitiva;
+    else if (activeTab === "inconsistentes") dataToExport = inconsistentes;
+
+    if (dataToExport.length === 0) {
+      notify("warning", "Exportación vacía", "No hay registros en la pestaña actual para exportar.");
+      return;
+    }
+
+    showLoader("Generando reporte Excel...");
+    try {
+      await exportToExcel({
+        data: dataToExport,
+        filename: `Reporte_${activeTab}_${selectedMonth.replace(" ", "_")}.xlsx`,
+      });
+      notify("success", "Reporte Generado", "El Excel ha sido descargado exitosamente.");
+    } catch (error) {
+      console.error(error);
+      notify("error", "Error", "Ocurrió un error al generar el reporte en Excel.");
+    } finally {
+      hideLoader();
+    }
+  }
 
   // ── Search handler ──
   function handleSearch() {
@@ -726,6 +756,7 @@ export function CancellationsPanel() {
           <div className="flex items-center gap-4">
             <button
               type="button"
+              onClick={handleExport}
               disabled={!hasSearched}
               className="px-5 py-3 border border-outline-variant text-navy font-bold text-sm rounded-lg hover:bg-surface-low transition-all cursor-pointer flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
             >
