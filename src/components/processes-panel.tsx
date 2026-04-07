@@ -15,6 +15,7 @@ import {
   BarChart3,
   Eye,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import {
   processRecords as initialRecords,
   processStats,
@@ -146,9 +147,11 @@ function ProgressBar({
 function ProcessRow({
   process,
   onViewLogs,
+  onResume,
 }: {
   process: ProcessRecord;
   onViewLogs: (process: ProcessRecord) => void;
+  onResume: (processId: string) => void;
 }) {
   return (
     <tr className="hover:bg-surface-low/50 transition-colors">
@@ -201,6 +204,14 @@ function ProcessRow({
           >
             REINTENTAR
           </button>
+        ) : process.status === "completed" ? (
+          <button
+            type="button"
+            onClick={() => onResume(process.id)}
+            className="px-3 py-1 text-[10px] font-bold text-green-700 hover:bg-green-50 rounded transition-all cursor-pointer border border-green-200"
+          >
+            REANUDAR
+          </button>
         ) : (
           <button
             type="button"
@@ -215,11 +226,16 @@ function ProcessRow({
 }
 
 export function ProcessesPanel() {
+  const router = useRouter();
   const [records, setRecords] = useState<ProcessRecord[]>(initialRecords);
   const [searchQuery, setSearchQuery] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [logsModal, setLogsModal] = useState<ProcessRecord | null>(null);
   const { notify } = useUIStore();
+
+  const handleResume = useCallback((processId: string) => {
+    router.push(`/automatic-cancellations?processId=${encodeURIComponent(processId)}&action=resume`);
+  }, [router]);
 
   const simulateProgress = useCallback(() => {
     setRecords((prev) =>
@@ -368,6 +384,7 @@ export function ProcessesPanel() {
                   key={process.id}
                   process={process}
                   onViewLogs={setLogsModal}
+                  onResume={handleResume}
                 />
               ))}
             </tbody>

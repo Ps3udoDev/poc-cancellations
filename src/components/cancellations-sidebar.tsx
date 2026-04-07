@@ -8,10 +8,16 @@ import {
   BookOpen,
   Info,
   Zap,
+  Filter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
+  {
+    label: "Selección de Pólizas",
+    icon: Filter,
+    href: "/automatic-cancellations/selection",
+  },
   {
     label: "Modificación de la Selección",
     icon: ListChecks,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Search,
   ListChecks,
@@ -106,6 +106,7 @@ export function CancellationsPanel() {
 
   // Tab
   const [activeTab, setActiveTab] = useState<TabId>("seleccion");
+  const [loadingProcessId, setLoadingProcessId] = useState<string | null>(null);
 
   // Records per stage
   const [seleccion, setSeleccion] = useState<PolicyRecord[]>([]);
@@ -130,6 +131,32 @@ export function CancellationsPanel() {
     }),
     [previa.length, errores.length, definitiva.length, inconsistentes.length]
   );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const processId = params.get("processId");
+      const action = params.get("action");
+      
+      if ((action === "resume" || action === "generated") && processId) {
+        setLoadingProcessId(processId);
+        showLoader(`Cargando datos del proceso ${processId}...`);
+        setTimeout(() => {
+          setSeleccion(policyRecords);
+          setPrevia([]);
+          setErrores([]);
+          setDefinitiva([]);
+          setInconsistentes([]);
+          setSelectedIds(new Set());
+          setHasSearched(true);
+          setActiveTab("seleccion");
+          hideLoader();
+          notify("success", "Datos cargados", `Se ha recuperado el proceso ${processId} para su modificación`);
+          window.history.replaceState({}, "", window.location.pathname);
+        }, 1200);
+      }
+    }
+  }, [showLoader, hideLoader, notify]);
 
   // ── Search handler ──
   function handleSearch() {
@@ -577,7 +604,13 @@ export function CancellationsPanel() {
   return (
     <>
       {/* Filter Panel */}
-      <section className="bg-surface-low rounded-xl p-6 mb-8">
+      <section className="bg-surface-low rounded-xl p-6 mb-8 relative">
+        {loadingProcessId && (
+          <div className="absolute -top-3 left-6 premium-gradient text-white px-4 py-1.5 text-xs font-bold rounded-full shadow-sm flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+            Proceso en Modificación: {loadingProcessId}
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
           <div className="space-y-2">
             <label className="block text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
